@@ -1,0 +1,12 @@
+services: 
+  app: # service name
+    build: # build configuration
+      context: .         # path to the directory containing the Dockerfile
+      dockerfile: Dockerfile  # specify the Dockerfile if not named 'Dockerfile'
+    container_name: node_app # optional: name your container
+    environment:
+      - PORT=8000  # change to 'production' for deployment
+    ports:
+      - "8000:8000"           # host:container port mapping
+    command: ["node", "index.js"] # or ["npm", "start"]
+    restart: unless-stopped # If this container stops (crashes, system reboots, etc.), automatically restart it

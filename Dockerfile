@@ -15,4 +15,8 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to run the application
-ENTRYPOINT [ "node", "index.js" ]
+# Use ENTRYPOINT when the container will always run that one command (production).
+# ENTRYPOINT [ "node", "index.js" ]
+
+# Default command
+CMD ["node", "index.js"]
