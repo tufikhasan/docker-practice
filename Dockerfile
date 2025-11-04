@@ -3,14 +3,13 @@ FROM node
 
 WORKDIR /app
 
-# Copy application dependency files first
-COPY package.json package.json
-COPY package-lock.json package-lock.json
+# Copy package files
+COPY package*.json .
 # Install application dependencies
 RUN npm install
 
-# Copy remaining files
-COPY index.js index.js
+# Copy the rest of the application code
+COPY . .
 
 # Define the command to run the application
 ENTRYPOINT [ "node", "index.js" ]
