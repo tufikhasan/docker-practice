@@ -8,5 +8,7 @@ services:
       - PORT=8000  # change to 'production' for deployment
     ports:
       - "8000:8000"           # host:container port mapping
+    volumes:
+      - .:/app                # mount current directory into container
     command: ["node", "index.js"] # or ["npm", "start"]
     restart: unless-stopped # If this container stops (crashes, system reboots, etc.), automatically restart it
