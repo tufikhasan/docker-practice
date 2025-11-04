@@ -2,13 +2,13 @@
 FROM node
 
 # Copy application dependency files first
-COPY package.json package.json
-COPY package-lock.json package-lock.json
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
 # Install application dependencies
-RUN npm install
+RUN cd /app && npm install
 
 # Copy remaining files
-COPY index.js index.js
+COPY index.js /app/index.js
 
 # Define the command to run the application
-ENTRYPOINT [ "node", "index.js" ]
+ENTRYPOINT [ "node", "/app/index.js" ]
